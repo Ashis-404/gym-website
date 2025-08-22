@@ -1,0 +1,38 @@
+.renew-container {
+  padding: 50px;
+/*  background: #111;*/
+  color: white;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.renew-title {
+  font-size: 28px;
+  color: gold;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px goldenrod;
+}
+
+.renew-options {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.renew-btn {
+  background: transparent;
+  border: 2px solid gold;
+  color: gold;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.renew-btn:hover {
+  background: gold;
+  color: black;
+  transform: scale(1.05);
+}

@@ -1,0 +1,56 @@
+.profile-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+}
+
+.profile-container h2 {
+  font-size: 28px;
+  color: gold;
+  margin-bottom: 30px;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid gold;
+  margin-bottom: 20px;
+}
+
+.profile-details {
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.profile-details strong {
+  color: gold;
+}
+/*.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: goldenrod;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+  color: white;
+}*/

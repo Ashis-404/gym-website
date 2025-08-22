@@ -1,0 +1,64 @@
+/* src/styles/SignIn.css */
+
+.auth-wrapper {
+  min-height: 100vh;                 /* ✅ fill full screen (no navbar/footer while logged out) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.signin-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(0, 0, 0, 0.78);   /* overlay so text is readable on bg image */
+  border: 1px solid gold;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
+  backdrop-filter: blur(2px);
+}
+
+.signin-title {
+  text-align: center;
+  color: gold;
+  margin-bottom: 20px;
+}
+
+.signin-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.signin-form label {
+  color: gold;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.signin-form input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid goldenrod;
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signin-form input::placeholder {
+  color: #ddd;
+}
+
+.signin-form input:focus {
+  border-color: gold;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+/* re-use your global .btn, add a full-width helper */
+.btn-full {
+  width: 100%;
+  margin-top: 8px;
+}

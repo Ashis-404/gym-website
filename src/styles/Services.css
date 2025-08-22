@@ -1,0 +1,46 @@
+.services-container {
+  text-align: center;
+  padding: 50px 20px;
+  min-height: calc(100vh - 140px); /* adjust based on Navbar + Footer height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.service-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  background: #111;
+  border: 1px solid gold;
+  padding: 20px;
+  width: 220px;
+  border-radius: 10px;
+  transition: 0.3s;
+  color: white;
+}
+.card:hover {
+  background: gold;
+  color: black;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .card {
+    width: 180px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 100%;
+  }
+}

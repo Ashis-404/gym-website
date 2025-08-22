@@ -1,0 +1,38 @@
+.reviews-container {
+  text-align: center;
+  padding: 50px 20px;
+}
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #111;
+  padding: 25px;
+  border: 2px solid gold;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 400px;
+}
+.review-form input,
+.review-form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+.review-form button {
+  width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .review-form {
+    width: 350px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .review-form {
+    width: 100%;
+  }
+}

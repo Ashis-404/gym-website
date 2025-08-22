@@ -1,0 +1,94 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: black;
+  color: white;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px gold, 0 0 20px goldenrod, 0 0 30px orange;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px gold, 0 0 10px goldenrod, 0 0 15px orange;
+  }
+  to {
+    text-shadow: 0 0 20px gold, 0 0 30px goldenrod, 0 0 40px orange;
+  }
+}
+
+
+.gym-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;        /* circular */
+  object-fit: cover;
+  border: 2px solid goldenrod;  /* golden border */
+  padding: 2px;  
+  box-shadow: 0 0 10px goldenrod;               /* little spacing inside border */
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links li a.active {
+    color: gold;
+    border-bottom: 2px solid gold;
+}
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: goldenrod;
+}
+
+.profile-icon {
+  font-size: 32px; /* increase size */
+  color: goldenrod; /* optional styling */
+  transition: transform 0.3s ease;
+}
+
+
+.profile-icon:hover {
+  transform: scale(1.2); /* zoom effect on hover */
+  color: white;          /* hover color */
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid gold;
+  color: gold;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: gold;
+  color: black;
+  transform: scale(1.05);
+}
+

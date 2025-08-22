@@ -1,0 +1,31 @@
+.details-container {
+  padding: 50px;
+  background: #111;
+  color: white;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.details-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: gold;
+  text-shadow: 0 0 10px goldenrod;
+}
+
+.details-box {
+  background: #1a1a1a;
+  border: 2px solid goldenrod;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+  box-shadow: 0 0 10px black;
+}
+
+.no-plans {
+  font-size: 18px;
+  color: #bbb;
+  margin-top: 40px;
+}

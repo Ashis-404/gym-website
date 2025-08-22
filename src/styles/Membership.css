@@ -1,0 +1,76 @@
+.membership-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.membership-container h1 {
+  color: gold;
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 5px gold, 0 0 10px goldenrod;
+}
+
+.membership-cards {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1); /* slightly transparent */
+  color: white;
+  border: 2px solid gold;
+  border-radius: 12px;
+  padding: 25px 20px;
+  width: 250px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(5px); /* softens background behind card */
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.card h2 {
+  color: gold;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.card p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background: gold;
+  color: black;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #ffd700;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .membership-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}

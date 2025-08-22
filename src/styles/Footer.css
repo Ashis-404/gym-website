@@ -1,0 +1,23 @@
+.footer {
+  background: black;
+  color: goldenrod;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: gold;
+  transform: scale(1.1);
+}

@@ -1,38 +1,94 @@
+/* ===== Global Reset ===== */
+/* Make the app take full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Flex layout for the entire app */
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content should expand */
+.main-content {
+  flex: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /*background: #000;
+  color: #fff;*/
+  line-height: 1.6;
+  
+  background: url("./assets/gymbg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: white; /* fallback */
+}
+
+
+
+/* ===== Headings ===== */
+h1, h3, h4 {
+  color: gold;
+  margin-bottom: 15px;
+}
+
+h2{
+   color: gold;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  background: gold;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: yellow;
+  transform: scale(1.05);
+}
+
+/* ===== Utility Classes ===== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* ===== Responsive Global ===== */
+@media (max-width: 1024px) {
+  body {
+    font-size: 15px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
   }
-  to {
-    transform: rotate(360deg);
+  h1, h2 {
+    font-size: 20px;
   }
 }

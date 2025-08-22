@@ -1,0 +1,46 @@
+.plans-container {
+  padding: 50px;
+ 
+  color: white;
+  min-height: 80vh;
+}
+
+.plans-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: gold;
+  text-align: center;
+  text-shadow: 0 0 10px goldenrod;
+}
+
+.plans-list {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.plan-card {
+  background: #1a1a1a;
+  border: 2px solid goldenrod;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.plan-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px gold;
+}
+
+.plan-card h3 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.plan-card p {
+  color: #ccc;
+  font-size: 14px;
+}
