@@ -86,7 +86,7 @@ function Home() {
               className="join-btn"
               onClick={() => navigate("/membership")}
             >
-              Join Now
+              Join now
             </button>
             <button className="join-btn" onClick={() => navigate("/services")}>
               Our Services
