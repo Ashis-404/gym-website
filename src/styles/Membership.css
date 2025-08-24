@@ -9,14 +9,14 @@
   min-height: 100vh;
 }
 
-.container {
+.membership-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 /* Floating Elements */
-.floating-elements {
+.membership-floating-elements {
   position: fixed;
   top: 0;
   left: 0;
@@ -26,34 +26,34 @@
   z-index: 1;
 }
 
-.floating-element-1,
-.floating-element-2,
-.floating-element-3 {
+.membership-floating-element-1,
+.membership-floating-element-2,
+.membership-floating-element-3 {
   position: absolute;
   font-size: 2.5rem;
   opacity: 0.08;
-  animation: float 8s ease-in-out infinite;
+  animation: membership-float 8s ease-in-out infinite;
 }
 
-.floating-element-1 {
+.membership-floating-element-1 {
   top: 15%;
   left: 8%;
   animation-delay: 0s;
 }
 
-.floating-element-2 {
+.membership-floating-element-2 {
   top: 70%;
   right: 12%;
   animation-delay: 3s;
 }
 
-.floating-element-3 {
+.membership-floating-element-3 {
   top: 45%;
   left: 85%;
   animation-delay: 6s;
 }
 
-@keyframes float {
+@keyframes membership-float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   33% { transform: translateY(-25px) rotate(3deg); }
   66% { transform: translateY(-15px) rotate(-2deg); }
@@ -67,10 +67,11 @@
   align-items: center;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   overflow: hidden;
+    justify-content: center;
   margin-top: 80px;
 }
 
-.hero-overlay {
+.membership-hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -79,8 +80,14 @@
   background: radial-gradient(circle at 40% 60%, rgba(255, 107, 53, 0.1) 0%, transparent 60%);
   z-index: 1;
 }
-
-.hero-content {
+.membership-hero-container{            
+  justify-content: center;
+    display: flex;       
+  justify-content: center;   
+  align-items: center;       
+  width: 100%;
+}
+.membership-hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
@@ -89,12 +96,12 @@
   transition: all 0.8s ease-out;
 }
 
-.hero-content.animate-in {
+.membership-hero-content.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-.hero-title {
+.membership-hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.1;
@@ -105,14 +112,14 @@
   background-clip: text;
 }
 
-.highlight {
+.membership-highlight {
   background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.hero-subtitle {
+.membership-hero-subtitle {
   font-size: 1.25rem;
   color: #b0b0b0;
   margin-bottom: 40px;
@@ -123,12 +130,12 @@
 }
 
 /* Section Headers */
-.section-header {
+.membership-section-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
-.section-title {
+.membership-section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   margin-bottom: 16px;
@@ -138,7 +145,7 @@
   background-clip: text;
 }
 
-.section-subtitle {
+.membership-section-subtitle {
   font-size: 1.2rem;
   color: #888888;
   max-width: 600px;
@@ -193,7 +200,7 @@
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
-.card-content {
+.membership-card-content {
   position: relative;
   z-index: 3;
   padding: 40px 30px;
@@ -202,27 +209,27 @@
   flex-direction: column;
 }
 
-.card-icon {
+.membership-card-icon {
   font-size: 3.5rem;
   margin-bottom: 20px;
   display: inline-block;
-  animation: bounce 3s infinite;
+  animation: membership-bounce 3s infinite;
 }
 
-@keyframes bounce {
+@keyframes membership-bounce {
   0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
   40% { transform: translateY(-8px); }
   60% { transform: translateY(-4px); }
 }
 
-.card-title {
+.membership-card-title {
   font-size: 1.8rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 15px;
 }
 
-.card-description {
+.membership-card-description {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
   line-height: 1.6;
@@ -230,13 +237,13 @@
   flex-grow: 1;
 }
 
-.card-features {
+.membership-card-features {
   list-style: none;
   padding: 0;
   margin: 0 0 30px 0;
 }
 
-.feature-item {
+.membership-feature-item {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -245,13 +252,13 @@
   font-size: 0.95rem;
 }
 
-.feature-check {
+.membership-feature-check {
   color: #50C878;
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-.card-action {
+.membership-card-action {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -262,7 +269,7 @@
   font-size: 1.1rem;
 }
 
-.card-hover-effect {
+.membership-card-hover-effect {
   position: absolute;
   top: 0;
   left: 0;
@@ -274,11 +281,11 @@
   z-index: 1;
 }
 
-.membership-card:hover .card-hover-effect {
+.membership-card:hover .membership-card-hover-effect {
   opacity: 1;
 }
 
-.card-glow {
+.membership-card-glow {
   position: absolute;
   top: -2px;
   left: -2px;
@@ -289,15 +296,15 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
-  animation: glow-rotate 3s linear infinite;
+  animation: membership-glow-rotate 3s linear infinite;
 }
 
-@keyframes glow-rotate {
+@keyframes membership-glow-rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-.membership-card:hover .card-glow {
+.membership-card:hover .membership-card-glow {
   opacity: 0.3;
 }
 
@@ -308,41 +315,44 @@
   position: relative;
 }
 
-.stats-grid {
+.membership-stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
 }
 
-.stat-item {
+.membership-stat-item {
   text-align: center;
   padding: 30px 20px;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.1);
+  background:black;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
-.stat-item:hover {
-  transform: translateY(-5px);
+.membership-stat-item:hover {
+/*  transform: translateY(-10px);*/
   background: rgba(255, 255, 255, 0.2);
 }
-
-.stat-icon {
+.membership-stat-item.animate {
+  opacity: 1;
+  transform: scale(1);
+}
+.membership-stat-icon {
   font-size: 2.5rem;
   margin-bottom: 15px;
   display: block;
 }
 
-.stat-number {
+.membership-stat-number {
   font-size: 2.5rem;
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 10px;
 }
 
-.stat-label {
+.membership-stat-label {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
@@ -355,14 +365,14 @@
     gap: 30px;
   }
   
-  .stats-grid {
+  .membership-stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .container {
+  .membership-container {
     padding: 0 16px;
   }
   
@@ -384,37 +394,37 @@
     gap: 20px;
   }
   
-  .card-content {
+  .membership-card-content {
     padding: 30px 20px;
   }
   
-  .stats-grid {
+  .membership-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
+  .membership-hero-title {
     font-size: 2rem;
   }
   
-  .hero-subtitle {
+  .membership-hero-subtitle {
     font-size: 1rem;
   }
   
-  .section-title {
+  .membership-section-title {
     font-size: 1.8rem;
   }
   
-  .card-title {
+  .membership-card-title {
     font-size: 1.5rem;
   }
   
-  .card-description {
+  .membership-card-description {
     font-size: 1rem;
   }
   
-  .stat-number {
+  .membership-stat-number {
     font-size: 2rem;
   }
 }

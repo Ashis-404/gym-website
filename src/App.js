@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -9,7 +9,11 @@ import PlansPage from "./pages/Membership/PlansPage";
 import PaymentPage from "./pages/Membership/PaymentPage";
 import RenewMembership from "./pages/Membership/RenewMembership";
 import ViewMembership from "./pages/Membership/ViewMembership";
-import Services from "./pages/Services";
+import ServicesMain from "./pages/Services/ServicesMain";
+import DietPlans from "./pages/Services/DietPlans";
+import WorkoutPlans from "./pages/Services/WorkoutPlans";
+import CalorieCalculator from "./pages/Services/CalorieCalculator";
+
 import Reviews from "./pages/Reviews";
 import Footer from "./components/Footer";
 
@@ -26,7 +30,7 @@ function App() {
 
   return (
     <>
-     
+
       {isLoggedIn && <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
 
 
@@ -67,10 +71,14 @@ function App() {
           path="/membership/view"
           element={isLoggedIn ? <ViewMembership /> : <Navigate to="/signin" replace />}
         />
-        <Route
-          path="/services"
-          element={isLoggedIn ? <Services /> : <Navigate to="/signin" replace />}
-        />
+         {/* Services main page */}
+        <Route path="/services" element={<ServicesMain />} />
+
+        {/* Sub-pages */}
+        <Route path="/services/diet-plans" element={<DietPlans />} />
+        <Route path="/services/workout-plans" element={<WorkoutPlans />} />
+        <Route path="/services/calorie-calculator" element={<CalorieCalculator />} />
+        <Route path="/contact" element={<div style={{ padding: '100px 20px', textAlign: 'center', color: 'white', background: '#0a0a0a', minHeight: '100vh' }}><h1>Contact Page</h1><p>Coming Soon!</p></div>} />
         <Route
           path="/reviews"
           element={isLoggedIn ? <Reviews /> : <Navigate to="/signin" replace />}

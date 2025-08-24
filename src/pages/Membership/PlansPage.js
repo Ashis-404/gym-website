@@ -82,14 +82,14 @@ function PlansPage() {
 
       {/* Hero Section */}
       <section className="plans-hero">
-        <div className="hero-overlay"></div>
-        <div className="container">
+        <div className="plan-hero-overlay"></div>
+        <div className="plan-container">
           <div className={`hero-content ${isLoaded ? 'animate-in' : ''}`}>
-            <h1 className="hero-title">
+            <h1 className="plan-hero-title">
               Choose Your
-              <span className="highlight"> Perfect Plan</span>
+              <span className="plan-highlight"> Perfect Plan</span>
             </h1>
-            <p className="hero-subtitle">
+            <p className="plan-hero-subtitle">
               Select a membership plan that matches your fitness goals and budget. 
               All plans include access to our world-class facilities and expert guidance.
             </p>
@@ -99,7 +99,7 @@ function PlansPage() {
 
       {/* Plans Section */}
       <section className="plans-section" ref={plansRef}>
-        <div className="container">
+        <div className="plan-container">
           <div className="plans-grid">
             {plans.map((plan, index) => (
               <div 
@@ -160,10 +160,10 @@ function PlansPage() {
 
       {/* Comparison Section */}
       <section className="comparison-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Why Choose Our Plans?</h2>
-            <p className="section-subtitle">
+        <div className="plan-container">
+          <div className="plan-section-header">
+            <h2 className="plan-section-title">Why Choose Our Plans?</h2>
+            <p className="plan-section-subtitle">
               Compare features and find the perfect fit for your fitness journey
             </p>
           </div>

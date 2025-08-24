@@ -77,14 +77,14 @@ function RenewMembership() {
 
       {/* Hero Section */}
       <section className="renew-hero">
-        <div className="hero-overlay"></div>
-        <div className="container">
-          <div className={`hero-content ${isLoaded ? 'animate-in' : ''}`}>
-            <h1 className="hero-title">
+        <div className="renew-hero-overlay"></div>
+        <div className="renew-container">
+          <div className={`renew-hero-content ${isLoaded ? 'animate-in' : ''}`}>
+            <h1 className="renew-hero-title">
               Renew Your
-              <span className="highlight"> Membership</span>
+              <span className="renew-highlight"> Membership</span>
             </h1>
-            <p className="hero-subtitle">
+            <p className="renew-hero-subtitle">
               Continue your fitness journey without interruption. Choose to renew your current plan 
               or explore new options that better fit your evolving fitness goals.
             </p>
@@ -95,7 +95,7 @@ function RenewMembership() {
       {/* Current Membership Status */}
       {membership && (
         <section className="current-membership">
-          <div className="container">
+          <div className="renew-container">
             <div className="membership-status">
               <div className="status-header">
                 <h2>Your Current Membership</h2>
@@ -127,10 +127,10 @@ function RenewMembership() {
 
       {/* Renewal Options */}
       <section className="renewal-options" ref={optionsRef}>
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Choose Your Renewal Option</h2>
-            <p className="section-subtitle">
+        <div className="renew-container">
+          <div className="renew-section-header">
+            <h2 className="renew-section-title">Choose Your Renewal Option</h2>
+            <p className="renew-section-subtitle">
               Select the best option for your continued fitness journey
             </p>
           </div>
@@ -186,10 +186,10 @@ function RenewMembership() {
 
       {/* Benefits Section */}
       <section className="benefits-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Why Renew With Us?</h2>
-            <p className="section-subtitle">
+        <div className="renew-container">
+          <div className="renew-section-header">
+            <h2 className="renew-section-title">Why Renew With Us?</h2>
+            <p className="renew-section-subtitle">
               Continue enjoying premium benefits and exclusive member perks
             </p>
           </div>

@@ -9,7 +9,7 @@
   min-height: 100vh;
 }
 
-.container {
+.renew-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
@@ -70,7 +70,7 @@
   margin-top: 80px;
 }
 
-.hero-overlay {
+.renew-hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -80,7 +80,7 @@
   z-index: 1;
 }
 
-.hero-content {
+.renew-hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
@@ -89,12 +89,12 @@
   transition: all 0.8s ease-out;
 }
 
-.hero-content.animate-in {
+.renew-hero-content.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-.hero-title {
+.renew-hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.1;
@@ -105,14 +105,14 @@
   background-clip: text;
 }
 
-.highlight {
+.renew-highlight {
   background: linear-gradient(135deg, #50C878 0%, #228B22 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.hero-subtitle {
+.renew-hero-subtitle {
   font-size: 1.25rem;
   color: #b0b0b0;
   margin-bottom: 40px;
@@ -243,12 +243,12 @@
   background: radial-gradient(circle at 70% 30%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
 }
 
-.section-header {
+.renew-section-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
-.section-title {
+.renew-section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   margin-bottom: 16px;
@@ -258,7 +258,7 @@
   background-clip: text;
 }
 
-.section-subtitle {
+.renew-section-subtitle {
   font-size: 1.2rem;
   color: #888888;
   max-width: 600px;
@@ -481,7 +481,7 @@
 }
 
 @media (max-width: 768px) {
-  .container {
+  .renew-container {
     padding: 0 16px;
   }
   
@@ -511,15 +511,15 @@
 }
 
 @media (max-width: 480px) {
-  .hero-title {
+  .renew-hero-title {
     font-size: 2rem;
   }
   
-  .hero-subtitle {
+  .renew-hero-subtitle {
     font-size: 1rem;
   }
   
-  .section-title {
+  .renew-section-title {
     font-size: 1.8rem;
   }
   

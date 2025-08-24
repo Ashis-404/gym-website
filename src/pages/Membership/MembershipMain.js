@@ -50,22 +50,22 @@ function MembershipMain() {
   return (
     <div className="membership-page">
       {/* Floating Elements */}
-      <div className="floating-elements">
-        <div className="floating-weight floating-element-1">🏋️</div>
-        <div className="floating-dumbbell floating-element-2">💪</div>
-        <div className="floating-trophy floating-element-3">🏆</div>
+      <div className="membership-floating-elements">
+        <div className="membership-floating-weight membership-floating-element-1">🏋️</div>
+        <div className="membership-floating-dumbbell membership-floating-element-2">💪</div>
+        <div className="membership-floating-trophy membership-floating-element-3">🏆</div>
       </div>
 
       {/* Hero Section */}
       <section className="membership-hero">
-        <div className="hero-overlay"></div>
-        <div className="container">
-          <div className={`hero-content ${isLoaded ? 'animate-in' : ''}`}>
-            <h1 className="hero-title">
+        <div className="membership-hero-overlay"></div>
+        <div className="membership-hero-container">
+          <div className={`membership-hero-content ${isLoaded ? 'animate-in' : ''}`}>
+            <h1 className="membership-hero-title">
               Choose Your
-              <span className="highlight"> Fitness Journey</span>
+              <span className="membership-highlight"> Fitness Journey</span>
             </h1>
-            <p className="hero-subtitle">
+            <p className="membership-hero-subtitle">
               Select the perfect membership option that fits your lifestyle and fitness goals. 
               Join thousands of members who have transformed their lives with us.
             </p>
@@ -75,10 +75,10 @@ function MembershipMain() {
 
       {/* Membership Options */}
       <section className="membership-options" ref={cardsRef}>
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Membership Options</h2>
-            <p className="section-subtitle">
+        <div className="membership-options-container">
+          <div className="membership-section-header">
+            <h2 className="membership-section-title">Membership Options</h2>
+            <p className="membership-section-subtitle">
               Everything you need to start, continue, or manage your fitness journey
             </p>
           </div>
@@ -94,32 +94,32 @@ function MembershipMain() {
                 }}
                 onClick={() => navigate(option.route)}
               >
-                <div className="card-content">
-                  <div className="card-icon">
+                <div className="membership-card-content">
+                  <div className="membership-card-icon">
                     <span>{option.icon}</span>
                   </div>
-                  <h3 className="card-title">{option.title}</h3>
-                  <p className="card-description">{option.description}</p>
+                  <h3 className="membership-card-title">{option.title}</h3>
+                  <p className="membership-card-description">{option.description}</p>
                   
-                  <ul className="card-features">
+                  <ul className="membership-card-features">
                     {option.features.map((feature, idx) => (
-                      <li key={idx} className="feature-item">
-                        <span className="feature-check">✓</span>
+                      <li key={idx} className="membership-feature-item">
+                        <span className="membership-feature-check">✓</span>
                         {feature}
                       </li>
                     ))}
                   </ul>
                   
-                  <div className="card-action">
-                    <span className="action-text">Get Started</span>
+                  <div className="membership-card-action">
+                    <span className="membership-action-text">Get Started</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                       <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                 </div>
                 
-                <div className="card-hover-effect"></div>
-                <div className="card-glow"></div>
+                <div className="membership-card-hover-effect"></div>
+                <div className="membership-card-glow"></div>
               </div>
             ))}
           </div>
@@ -128,27 +128,27 @@ function MembershipMain() {
 
       {/* Stats Section */}
       <section className="membership-stats">
-        <div className="container">
-          <div className="stats-grid">
-            <div className="stat-item">
-              <div className="stat-icon">👥</div>
-              <div className="stat-number">5000+</div>
-              <div className="stat-label">Active Members</div>
+        <div className="membership-stats-container">
+          <div className="membership-stats-grid">
+            <div className="membership-stat-item">
+              <div className="membership-stat-icon">👥</div>
+              <div className="membership-stat-number">5000+</div>
+              <div className="membership-stat-label">Active Members</div>
             </div>
-            <div className="stat-item">
-              <div className="stat-icon">🏆</div>
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Certified Trainers</div>
+            <div className="membership-stat-item">
+              <div className="membership-stat-icon">🏆</div>
+              <div className="membership-stat-number">50+</div>
+              <div className="membership-stat-label">Certified Trainers</div>
             </div>
-            <div className="stat-item">
-              <div className="stat-icon">⭐</div>
-              <div className="stat-number">10+</div>
-              <div className="stat-label">Years Experience</div>
+            <div className="membership-stat-item">
+              <div className="membership-stat-icon">⭐</div>
+              <div className="membership-stat-number">10+</div>
+              <div className="membership-stat-label">Years Experience</div>
             </div>
-            <div className="stat-item">
-              <div className="stat-icon">💪</div>
-              <div className="stat-number">24/7</div>
-              <div className="stat-label">Gym Access</div>
+            <div className="membership-stat-item">
+              <div className="membership-stat-icon">💪</div>
+              <div className="membership-stat-number">24/7</div>
+              <div className="membership-stat-label">Gym Access</div>
             </div>
           </div>
         </div>
