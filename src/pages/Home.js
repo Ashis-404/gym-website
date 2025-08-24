@@ -162,19 +162,19 @@ function Home() {
 
       {/* Hero Section */}
       <section className="hero">
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          <div className={`hero-text ${isLoaded ? 'animate-in' : ''}`}>
-            <h1 className="hero-title">
+        <div className="hero-overlay-home"></div>
+        <div className="hero-content-home">
+          <div className={`hero-text-home ${isLoaded ? 'animate-in' : ''}`}>
+            <h1 className="hero-title-home">
               Transform Your Body,
               <span className="highlight"> Transform Your Life</span>
             </h1>
-            <p className="hero-subtitle">
+            <p className="hero-subtitle-home">
               Join thousands of members in our premium fitness facility. 
               Experience world-class equipment, expert training, and a supportive community 
               that will help you achieve your fitness goals.
             </p>
-            <div className="hero-buttons">
+            <div className="hero-buttons-home">
               <button
                 className="btn-primary pulse-animation"
                 onClick={() => navigate("/membership")}
