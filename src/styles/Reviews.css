@@ -1,38 +1,842 @@
-.reviews-container {
-  text-align: center;
-  padding: 50px 20px;
+/*
+  Reviews Page Styles
+
+  This CSS file provides a complete, responsive, and animated style guide for the Reviews page.
+  It uses a dark theme with vibrant gradients for highlights, creating a sleek, modern, and attractive look.
+
+  Key features include:
+  - Responsive design for all screen sizes (mobile, tablet, desktop).
+  - Subtle floating background elements with animation.
+  - Smooth "in-view" animations for sections and cards using `opacity` and `transform`.
+  - Dynamic hover effects for buttons and review cards with glowing shadows and transitions.
+  - Custom scrollbar styling for a consistent look.
+  - Refined typography and spacing for optimal readability.
+*/
+
+/* --- Global Styles & Body Reset --- */
+.reviews-page {
+  position: relative;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-top: 80px; /* Space for a fixed header if needed */
 }
-.review-form {
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Floating Elements Animation --- */
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-element-1,
+.floating-element-2,
+.floating-element-3 {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.08;
+  animation: float 12s ease-in-out infinite; /* Slower and more prominent animation */
+}
+
+.floating-element-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-element-2 {
+  top: 60%;
+  right: 15%;
+  animation-delay: 4s;
+}
+
+.floating-element-3 {
+  top: 80%;
+  left: 75%;
+  animation-delay: 8s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  33% { transform: translateY(-30px) rotate(5deg) scale(1.1); }
+  66% { transform: translateY(-15px) rotate(-3deg) scale(1.05); }
+}
+
+/* --- Hero Section --- */
+.reviews-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  overflow: hidden;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 60%);
+  z-index: 1;
+  animation: hero-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes hero-glow {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-content.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #b0b0b0;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rating-summary {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.average-rating {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  background: #111;
-  padding: 25px;
-  border: 2px solid gold;
-  border-radius: 10px;
-  margin: 20px auto;
-  width: 400px;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 40px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: all 0.5s ease;
 }
-.review-form input,
-.review-form textarea {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
+
+.average-rating:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
-.review-form button {
+
+.rating-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 1.5rem;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.star.filled {
+  opacity: 1;
+  animation: starGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes starGlow {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  100% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+}
+
+.rating-text {
+  color: #888888;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* --- Section Headers --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #888888;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Review Form Section --- */
+.review-form-section {
+  padding: 100px 0;
+  background: #111111;
+  position: relative;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.review-form-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba(74, 144, 226, 0.08) 0%, transparent 50%);
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .review-form {
-    width: 350px;
+.form-container {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.form-container.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.review-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #FF6B35;
+  background: rgba(255, 107, 53, 0.1);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1), inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #888888;
+}
+
+.rating-input select {
+  cursor: pointer;
+}
+
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hide the native file input */
+.file-input-wrapper input[type="file"] {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #cccccc;
+  font-weight: 500;
+}
+
+.file-input-label:hover {
+  border-color: #FF6B35;
+  background: rgba(255, 107, 53, 0.1);
+  color: #FF6B35;
+  transform: translateY(-2px);
+}
+
+.file-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.file-input-label:hover .file-icon {
+  transform: scale(1.1);
+}
+
+.form-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.submit-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  background: transparent;
+  color: #cccccc;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn:hover {
+  border-color: #4285F4;
+  background: rgba(66, 133, 244, 0.1);
+  color: #4285F4;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(66, 133, 244, 0.2);
+}
+
+.google-icon {
+  font-size: 1.2rem;
+}
+
+/* --- Reviews Display Section --- */
+.reviews-display-section {
+  padding: 100px 0;
+  background: #0a0a0a;
+  position: relative;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjusted min-width for better fit */
+  gap: 30px;
+}
+
+.review-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  will-change: transform, box-shadow;
+}
+
+.review-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.review-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 107, 53, 0.2);
+  border-color: rgba(255, 107, 53, 0.3);
+}
+
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(74, 144, 226, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.review-card:hover::before {
+  opacity: 1;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.reviewer-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FF6B35;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
+}
+
+.reviewer-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+.review-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.review-rating .star {
+  font-size: 1.2rem;
+}
+
+.review-content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+
+.review-text {
+  color: #cccccc;
+  line-height: 1.6;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.helpful-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.helpful-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: #cccccc;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  will-change: transform, background;
+}
+
+.helpful-btn:hover {
+  background: rgba(255, 107, 53, 0.1);
+  border-color: rgba(255, 107, 53, 0.3);
+  color: #FF6B35;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.helpful-count {
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+.google-review-source {
+  font-size: 0.8rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.google-review-source a {
+  color: #4285F4;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.google-review-source a:hover {
+  text-decoration: underline;
+  color: #5a9bff;
+}
+
+.google-review-source img {
+  border-radius: 50%;
+}
+
+/* --- CTA Section --- */
+.reviews-cta {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.reviews-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.cta-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  will-change: transform, box-shadow;
+}
+
+.cta-btn.primary {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.cta-btn.primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 968px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .google-btn {
+    justify-content: center;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  .review-form {
-    width: 100%;
+  .container {
+    padding: 0 16px;
   }
+  
+  .reviews-page {
+    padding-top: 60px;
+  }
+  
+  .reviews-hero {
+    min-height: 60vh;
+  }
+  
+  .review-form-section,
+  .reviews-display-section,
+  .reviews-cta {
+    padding: 60px 0;
+  }
+  
+  .review-form {
+    padding: 30px 20px;
+  }
+  
+  .review-card {
+    padding: 20px;
+  }
+  
+  .review-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .average-rating {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .rating-number {
+    font-size: 2.5rem;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .reviewer-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+/* --- Loading States and Transitions --- */
+/* Disables animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #F7931E 0%, #FF6B35 100%);
 }
