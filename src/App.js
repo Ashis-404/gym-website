@@ -17,7 +17,7 @@ import CalorieCalculator from "./pages/Services/CalorieCalculator";
 import Reviews from "./pages/Reviews";
 import Footer from "./components/Footer";
 
-function App() {
+/*function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem("isLoggedIn") === "true";
   });
@@ -35,7 +35,7 @@ function App() {
 
 
       <Routes>
-        {/* Default route → if not logged in, go to /signin */}
+        
         <Route
           path="/"
           element={
@@ -43,10 +43,10 @@ function App() {
           }
         />
 
-        {/* Sign in route */}
+        
         <Route path="/signin" element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
 
-        {/* Protected Routes → only accessible if logged in */}
+        
         <Route
           path="/profile"
           element={isLoggedIn ? <Profile /> : <Navigate to="/signin" replace />}
@@ -71,10 +71,10 @@ function App() {
           path="/membership/view"
           element={isLoggedIn ? <ViewMembership /> : <Navigate to="/signin" replace />}
         />
-         {/* Services main page */}
+        
         <Route path="/services" element={<ServicesMain />} />
 
-        {/* Sub-pages */}
+        
         <Route path="/services/diet-plans" element={<DietPlans />} />
         <Route path="/services/workout-plans" element={<WorkoutPlans />} />
         <Route path="/services/calorie-calculator" element={<CalorieCalculator />} />
@@ -85,10 +85,62 @@ function App() {
         />
       </Routes>
 
-      {/* Show Footer only if logged in */}
+      
       {isLoggedIn && <Footer />}
     </>
   );
 }
 
 export default App;
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import SignIn from './components/SignIn';
+import Profile from './components/Profile';
+import ServicesMain from './components/services/ServicesMain';
+import DietPlans from './components/services/DietPlans';
+import WorkoutPlans from './components/services/WorkoutPlans';
+import CalorieCalculator from './components/services/CalorieCalculator';
+import Reviews from './components/Reviews';
+import MembershipMain from './components/membership/MembershipMain';
+import PlansPage from './components/membership/PlansPage';
+import PaymentPage from './components/membership/PaymentPage';
+import RenewMembership from './components/membership/RenewMembership';
+import ViewMembership from './components/membership/ViewMembership';
+*/
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem('userName') ? true : false
+  );
+
+  return (
+    
+      <div className="App">
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/profile" element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/membership" element={<MembershipMain />} />
+          <Route path="/membership/plans" element={<PlansPage />} />
+          <Route path="/membership/payment/:planId" element={<PaymentPage />} />
+          <Route path="/membership/renew" element={<RenewMembership />} />
+          <Route path="/membership/view" element={<ViewMembership />} />
+          <Route path="/services" element={<ServicesMain />} />
+          <Route path="/services/diet-plans" element={<DietPlans />} />
+          <Route path="/services/workout-plans" element={<WorkoutPlans />} />
+          <Route path="/services/calorie-calculator" element={<CalorieCalculator />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/contact" element={<div style={{padding: '100px 20px', textAlign: 'center', color: 'white', background: '#0a0a0a', minHeight: '100vh'}}><h1>Contact Page</h1><p>Coming Soon!</p></div>} />
+        </Routes>
+        {isLoggedIn && <Footer />}
+      </div>
+    
+  );
+}
+
+export default App;
+
