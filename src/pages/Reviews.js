@@ -27,57 +27,57 @@ function Reviews() {
 
   useEffect(() => {
     setIsLoaded(true);
-    fetchReviews(); // Fetch initial reviews
+    // fetchReviews(); // Fetch initial reviews
     fetchGoogleReviews(); // Fetch Google Maps reviews
   }, []);
 
   // Fetches initial mock reviews
-   const fetchReviews = () => {
-     // Mock reviews data
-    const mockReviews = [
-       {
-         id: 1,
-         name: "Amit Sharma",
-         rating: 5,
-         review: "Amazing gym with top-notch equipment! The trainers are incredibly supportive and knowledgeable. I've seen tremendous progress in just 3 months.",
-         date: "2024-01-15",
-         image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-       },
-       {
-         id: 2,
-         name: "Priya Singh",
-         rating: 5,
-         review: "Best gym in the city! Clean environment, premium equipment, and 24/7 access makes it perfect for my busy schedule. Highly recommended!",
-         date: "2024-01-10",
-         image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-       },
-       {
-         id: 3,
-         name: "Rahul Mehta",
-         rating: 4,
-         review: "Great facilities and affordable plans. The group classes are fantastic and the community is very motivating. Love the energy here!",
-         date: "2024-01-08",
-         image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-       },
-       {
-         id: 4,
-         name: "Sneha Patel",
-         rating: 5,
-         review: "Transformed my fitness journey completely! The personal trainers are exceptional and the nutrition guidance is spot on. Worth every penny!",
-         date: "2024-01-05",
-         image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-       },
-       {
-         id: 5,
-         name: "Vikash Kumar",
-         rating: 5,
-         review: "Outstanding gym with modern equipment and professional staff. The atmosphere is motivating and results speak for themselves. Absolutely love it!",
-         date: "2024-01-02",
-         image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-       }
-     ];
-     setReviews(mockReviews);
-   };
+  //  const fetchReviews = () => {
+  //    // Mock reviews data
+  //   const mockReviews = [
+  //      {
+  //        id: 1,
+  //        name: "Amit Sharma",
+  //        rating: 5,
+  //        review: "Amazing gym with top-notch equipment! The trainers are incredibly supportive and knowledgeable. I've seen tremendous progress in just 3 months.",
+  //        date: "2024-01-15",
+  //        image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+  //      },
+  //      {
+  //        id: 2,
+  //        name: "Priya Singh",
+  //        rating: 5,
+  //        review: "Best gym in the city! Clean environment, premium equipment, and 24/7 access makes it perfect for my busy schedule. Highly recommended!",
+  //        date: "2024-01-10",
+  //        image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+  //      },
+  //      {
+  //        id: 3,
+  //        name: "Rahul Mehta",
+  //        rating: 4,
+  //        review: "Great facilities and affordable plans. The group classes are fantastic and the community is very motivating. Love the energy here!",
+  //        date: "2024-01-08",
+  //        image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+  //      },
+  //      {
+  //        id: 4,
+  //        name: "Sneha Patel",
+  //        rating: 5,
+  //        review: "Transformed my fitness journey completely! The personal trainers are exceptional and the nutrition guidance is spot on. Worth every penny!",
+  //        date: "2024-01-05",
+  //        image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+  //      },
+  //      {
+  //        id: 5,
+  //        name: "Vikash Kumar",
+  //        rating: 5,
+  //        review: "Outstanding gym with modern equipment and professional staff. The atmosphere is motivating and results speak for themselves. Absolutely love it!",
+  //        date: "2024-01-02",
+  //        image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+  //      }
+  //    ];
+  //    setReviews(mockReviews);
+  //  };
 
   // Fetches reviews from Google Maps using the Google Places API
   const fetchGoogleReviews = () => {
@@ -107,6 +107,7 @@ function Reviews() {
                 "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
               source: "Google Maps",
             }));
+            console.log("Fetched Google Reviews:", formattedReviews); 
             setGoogleReviews(formattedReviews);
           }
         }
