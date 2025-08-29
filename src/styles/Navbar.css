@@ -379,7 +379,7 @@
   visibility: visible;
 }
 
-/* Responsive Design */
+/* Responsive Design for navbar */
 @media (max-width: 968px) {
   .navbar-container {
     padding: 0 20px;

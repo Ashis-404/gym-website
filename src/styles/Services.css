@@ -409,7 +409,7 @@
 
 }
 
-/* Responsive Design */
+/* Responsive Design for Services page */
 @media (max-width: 968px) {
   .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

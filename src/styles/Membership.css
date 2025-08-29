@@ -358,7 +358,7 @@
   font-weight: 500;
 }
 
-/* Responsive Design */
+/* Responsive Design for Membership page*/
 @media (max-width: 968px) {
   .membership-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -408,7 +408,7 @@
   font-size: 0.95rem;
 }
 
-/* Responsive Design */
+/* Responsive Design for Plans page */
 @media (max-width: 968px) {
   .plans-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
