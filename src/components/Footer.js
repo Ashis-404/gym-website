@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 
 function Footer() {
     const currentYear = new Date().getFullYear();
@@ -22,11 +23,11 @@ function Footer() {
     ];
 
     const socialLinks = [
-        { name: 'Facebook', icon: '📘', url: 'https://facebook.com' },
-        { name: 'Instagram', icon: '📷', url: 'https://instagram.com' },
-        { name: 'Twitter', icon: '🐦', url: 'https://twitter.com' },
-        { name: 'YouTube', icon: '📺', url: 'https://youtube.com' },
-        { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com' }
+        { name: 'Facebook', icon: <FaFacebookF />, url: 'https://facebook.com' },
+        { name: 'Instagram', icon: <FaInstagram />, url: 'https://instagram.com' },
+        { name: 'Twitter', icon: <FaTwitter />, url: 'https://twitter.com' },
+        { name: 'YouTube', icon: <FaYoutube />, url: 'https://youtube.com' },
+        { name: 'LinkedIn', icon: <FaLinkedinIn />, url: 'https://linkedin.com' }
     ];
 
     return (
@@ -85,20 +86,6 @@ function Footer() {
                         </ul>
                     </div>
 
-                    {/* Services 
-          <div className="footer-section">
-            <h4 className="footer-section-title">Our Services</h4>
-            <ul className="footer-links">
-              {services.map((service, index) => (
-                <li key={index}>
-                  <Link to={service.path} className="footer-link">
-                    <span className="link-icon">▶</span>
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>*/}
 
                     {/* Contact Info */}
                     <div className="footer-section">
@@ -181,6 +168,7 @@ function Footer() {
                                 </a>
                             ))}
                         </div>
+
                     </div>
 
                     <div className="footer-legal">
