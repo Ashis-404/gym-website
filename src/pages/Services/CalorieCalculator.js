@@ -49,7 +49,7 @@ function CalorieCalculator() {
 
   const calculateCalories = () => {
     const { age, gender, height, weight, activityLevel, goal } = formData;
-    
+
     if (!age || !height || !weight) {
       alert('Please fill in all required fields');
       return;
@@ -65,7 +65,7 @@ function CalorieCalculator() {
 
     // Calculate TDEE (Total Daily Energy Expenditure)
     const tdee = bmr * activityLevels[activityLevel].multiplier;
-    
+
     // Adjust for goal
     const targetCalories = tdee + goals[goal].adjustment;
 
@@ -114,7 +114,7 @@ function CalorieCalculator() {
               <span className="calculator-highlight"> Calorie Calculator</span>
             </h1>
             <p className="calculator-hero-subtitle">
-              Calculate your daily caloric needs with precision. Get personalized recommendations 
+              Calculate your daily caloric needs with precision. Get personalized recommendations
               based on your goals, activity level, and body composition.
             </p>
           </div>
@@ -125,21 +125,21 @@ function CalorieCalculator() {
       <section className="calculator-tab-navigation">
         <div className="calculator-container">
           <div className="calculator-tab-buttons">
-            <button 
+            <button
               className={`calculator-tab-btn ${activeTab === 'calculator' ? 'active' : ''}`}
               onClick={() => setActiveTab('calculator')}
             >
               <span className="calculator-tab-icon">🧮</span>
               Calculator
             </button>
-            <button 
+            {/*<button
               className={`calculator-tab-btn ${activeTab === 'tracker' ? 'active' : ''}`}
               onClick={() => setActiveTab('tracker')}
             >
               <span className="calculator-tab-icon">📊</span>
               Food Tracker
-            </button>
-            <button 
+            </button>*/}
+            <button
               className={`calculator-tab-btn ${activeTab === 'tips' ? 'active' : ''}`}
               onClick={() => setActiveTab('tips')}
             >
@@ -158,7 +158,7 @@ function CalorieCalculator() {
               {/* Input Form */}
               <div className={`calculator-form ${calculatorVisible ? 'animate-in' : ''}`}>
                 <h3 className="calculator-form-title">Personal Information</h3>
-                
+
                 <div className="calculator-form-group">
                   <label htmlFor="age">Age (years)</label>
                   <input
@@ -246,7 +246,7 @@ function CalorieCalculator() {
                   <button className="calculate-btn" onClick={calculateCalories}>
                     <span>Calculate Calories</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                   <button className="calculator-reset-btn" onClick={resetCalculator}>
@@ -260,7 +260,7 @@ function CalorieCalculator() {
                 {results ? (
                   <div className="calculator-results-content">
                     <h3 className="calculator-results-title">Your Results</h3>
-                    
+
                     <div className="calculator-result-cards">
                       <div className="calculator-result-card bmr">
                         <div className="calculator-result-icon">🔥</div>
@@ -331,7 +331,7 @@ function CalorieCalculator() {
         </section>
       )}
 
-      {/* Food Tracker Tab */}
+      {/* Food Tracker Tab 
       {activeTab === 'tracker' && (
         <section className="tracker-section">
           <div className="calculator-container">
@@ -350,7 +350,7 @@ function CalorieCalculator() {
             </div>
           </div>
         </section>
-      )}
+      )}*/}
 
       {/* Tips Tab */}
       {activeTab === 'tips' && (

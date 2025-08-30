@@ -140,9 +140,7 @@
 }
 
 .plans-grid {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
   position: relative;
   z-index: 2;
 }

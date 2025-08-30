@@ -21,15 +21,16 @@ function PlansPage() {
     { 
       id: 1, 
       name: "Basic Plan", 
-      price: 500,
+      price: 1200,
       duration: "1 Month",
       popular: false,
       features: [
         "Access to gym equipment",
         "Basic workout guidance",
-        "Locker facility",
         "Free Wi-Fi",
-        "Water dispenser access"
+        "Water dispenser access",
+        "Guest Passes (1 person) Every Sunday",
+        "One Time Additional Admission Charges Required",
       ],
       gradient: "linear-gradient(135deg, #4A90E2 0%, #357ABD 100%)",
       icon: "🏋️‍♂️"
@@ -37,16 +38,17 @@ function PlansPage() {
     { 
       id: 2, 
       name: "Standard Plan", 
-      price: 1200,
+      price: 3600,
       duration: "3 Months",
       popular: true,
       features: [
-        "Everything in Basic",
-        "Personal trainer sessions (2/month)",
-        "Group fitness classes",
-        "Nutrition consultation",
-        "Progress tracking",
-        "Steam room access"
+        "Access to gym equipment",
+        "Basic workout guidance",
+        "Free Wi-Fi",
+        "Water dispenser access",
+        "Guest Passes (1 person) Every Sunday",
+        "No Admission Charges Required",
+        
       ],
       gradient: "linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)",
       icon: "💪"
@@ -54,20 +56,36 @@ function PlansPage() {
     { 
       id: 3, 
       name: "Premium Plan", 
-      price: 4000,
-      duration: "12 Months",
+      price: 7000,
+      duration: "6 Months",
       popular: false,
       features: [
-        "Everything in Standard",
-        "Unlimited personal training",
-        "Premium equipment access",
-        "Massage therapy (2/month)",
-        "Diet plan customization",
-        "Priority booking",
-        "Guest passes (4/month)"
+        "Access to gym equipment",
+        "Basic workout guidance",
+        "Free Wi-Fi",
+        "Water dispenser access",
+        "Guest Passes (1 person) Every Sunday",
+        "No Admission Charges Required",
       ],
       gradient: "linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%)",
       icon: "👑"
+    },
+    { 
+      id: 4, 
+      name: "Platinum Plan", 
+      price: 13000,
+      duration: "12 Months",
+      popular: false,
+      features: [
+        "Access to gym equipment",
+        "Basic workout guidance",
+        "Free Wi-Fi",
+        "Water dispenser access",
+        "Guest Passes (1 person) Every Sunday",
+        "No Admission Charges Required",
+      ],
+      gradient: "linear-gradient(135deg, #92c3f4ff 0%, #5c97beff 100%)",
+      icon: "💎"
     },
   ];
 
