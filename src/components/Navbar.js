@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom"; // added useLocation
 import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa"; 
 import "../styles/Navbar.css";
 
 function Navbar({ isLoggedIn, setIsLoggedIn }) {
   const navigate = useNavigate();
+  const location = useLocation(); // <-- new
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleLogout = () => {
     setIsLoggedIn(false); 
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("isLoggedIn");
     navigate("/signin");  
     setIsMobileMenuOpen(false);
   };
@@ -44,6 +49,11 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMobileMenuOpen]);
+
+  // Do not render navbar on signin/signup page
+  if (location.pathname === "/signin" || location.pathname === "/signup") {
+    return null;
+  }
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>

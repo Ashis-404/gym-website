@@ -10,6 +10,10 @@ function PaymentPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
+  // New state for modal
+  const [paidModalOpen, setPaidModalOpen] = useState(false);
+  const [paidAmount, setPaidAmount] = useState(0);
+
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -51,37 +55,15 @@ function PaymentPage() {
 
     setIsProcessing(true);
 
-    // Create Razorpay options
-    const options = {
-      key: "YOUR_RAZORPAY_KEY", // replace with your key
-      amount: plan.price * 100, // in paise
-      currency: "INR",
-      name: "TILL FAILURE Gym",
-      description: `Payment for ${plan.name}`,
-      handler: function (response) {
-        // payment successful
-        buyPlan(plan);
-        setIsProcessing(false);
-        alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
-        navigate("/membership/view");
-      },
-      prefill: {
-        name: "Customer Name",
-        email: "customer@example.com",
-        contact: "9999999999",
-      },
-      theme: {
-        color: "#FF6B35",
-      },
-      modal: {
-        ondismiss: function() {
-          setIsProcessing(false);
-        }
-      }
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+    // If you have a valid Razorpay key & integration use that.
+    // Fallback: simulate payment and show success popup
+    setTimeout(() => {
+      const total = plan.price + Math.round(plan.price * 0.18);
+      buyPlan(plan);
+      setIsProcessing(false);
+      setPaidAmount(total);
+      setPaidModalOpen(true);
+    }, 1200);
   };
 
   return (
@@ -217,6 +199,71 @@ function PaymentPage() {
               <div className="error-icon">❌</div>
               <h2>Invalid Plan Selected</h2>
               <p>The selected plan could not be found. Please go back and select a valid plan.</p>
+            </div>
+          )}
+
+          {/* Paid success modal */}
+          {paidModalOpen && (
+            <div
+              className="paid-modal-overlay"
+              style={{
+                position: "fixed",
+                inset: 0,
+                background: "rgba(0,0,0,0.6)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 9999
+              }}
+            >
+              <div
+                className="paid-modal"
+                style={{
+                  background: "#0f1724",
+                  color: "#fff",
+                  padding: 24,
+                  borderRadius: 12,
+                  width: 360,
+                  maxWidth: "90%",
+                  textAlign: "center",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.6)"
+                }}
+              >
+                <div style={{ fontSize: 48 }}>✅</div>
+                <h3 style={{ marginTop: 8 }}>Payment Successful</h3>
+                <p style={{ color: "#cbd5e1" }}>Amount Paid: ₹{paidAmount}</p>
+                <div style={{ marginTop: 16, display: "flex", gap: 12, justifyContent: "center" }}>
+                  <button
+                    onClick={() => {
+                      setPaidModalOpen(false);
+                      navigate("/membership/view");
+                    }}
+                    style={{
+                      background: "linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)",
+                      border: "none",
+                      color: "#fff",
+                      padding: "10px 16px",
+                      borderRadius: 8,
+                      cursor: "pointer"
+                    }}
+                  >
+                    View Membership
+                  </button>
+                  <button
+                    onClick={() => setPaidModalOpen(false)}
+                    style={{
+                      background: "transparent",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      color: "#fff",
+                      padding: "10px 16px",
+                      borderRadius: 8,
+                      cursor: "pointer"
+                    }}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
           )}
 

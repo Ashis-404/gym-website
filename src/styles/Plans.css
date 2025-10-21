@@ -140,9 +140,9 @@
 }
 
 .plans-grid {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  position: relative;
-  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* smaller min width for mobile */
+  gap: 30px;
 }
 
 .plan-card {
@@ -154,6 +154,8 @@
   opacity: 0;
   transform: translateY(40px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  min-width: 0; /* allow shrinkage inside grid */
 }
 
 .plan-card.animate-in {
@@ -475,6 +477,20 @@
   
   .comparison-grid {
     grid-template-columns: 1fr;
+  }
+
+  .plans-hero {
+    margin-top: 70px; /* reduce top margin for mobile */
+  }
+
+  .plan-card {
+    padding: 18px;
+    transform: none;
+    opacity: 1;
+  }
+
+  .plan-glow {
+    display: none; /* remove decorative glow on tiny screens */
   }
 }
 

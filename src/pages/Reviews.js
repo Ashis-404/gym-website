@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "../styles/Reviews.css";
 
 function Reviews() {
@@ -166,9 +169,76 @@ function Reviews() {
     ));
   };
 
+  // Add slider arrows (same shape used in Home)
+  function NextArrow(props) {
+    const { onClick } = props;
+    return (
+      <div className="slider-arrow next-arrow" onClick={onClick}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+    );
+  }
+
+  function PrevArrow(props) {
+    const { onClick } = props;
+    return (
+      <div className="slider-arrow prev-arrow" onClick={onClick}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+    );
+  }
+
+  // Small testimonials array (can be extended or pulled from existing data)
+  const testimonials = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      role: "Fitness Enthusiast",
+      text: "This gym completely transformed my fitness journey. The trainers are incredible and the facilities are world-class!",
+      rating: 5,
+      image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      id: 2,
+      name: "Mike Chen",
+      role: "Professional Athlete",
+      text: "The best investment I've made in my health. Premium equipment, expert guidance, and amazing community.",
+      rating: 5,
+      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      id: 3,
+      name: "Emma Wilson",
+      role: "Busy Professional",
+      text: "24/7 access is a game-changer for my schedule. Clean, safe, and always well-maintained. Highly recommend!",
+      rating: 5,
+      image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    }
+  ];
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    customPaging: (i) => (
+      <div className="custom-dot"></div>
+    )
+  };
+
   // Combine local and Google reviews, then sort by date
   const allReviews = [...reviews, ...googleReviews].sort((a, b) => new Date(b.date) - new Date(a.date));
-  const averageRating = allReviews.reduce((sum, review) => sum + review.rating, 0) / allReviews.length;
+  const averageRating = allReviews.length ? (allReviews.reduce((sum, review) => sum + (review.rating || 0), 0) / allReviews.length) : 0;
 
   return (
     <div className="reviews-page">
@@ -309,7 +379,7 @@ function Reviews() {
         </div>
       </section>
 
-      {/* Reviews Display Section */}
+      {/* Reviews Display Section 
       <section className="reviews-display-section" ref={reviewsRef}>
         <div className="container">
           <div className="section-header">
@@ -367,6 +437,42 @@ function Reviews() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>*/}
+
+      {/* Testimonials Section (slider like Home) */}
+      <section className="testimonials-section reviews-testimonials">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">What Our Members Say</h2>
+            <p className="section-subtitle">Real stories from real people who transformed their lives with us</p>
+          </div>
+          <div className="testimonials-slider">
+            <Slider {...sliderSettings}>
+              {testimonials.map((t) => (
+                <div key={t.id} className="testimonial-slide">
+                  <div className="testimonial-card">
+                    <div className="testimonial-content">
+                      <div className="quote-icon">"</div>
+                      <p className="testimonial-text">{t.text}</p>
+                      <div className="testimonial-rating">
+                        {[...Array(t.rating)].map((_, i) => (
+                          <span key={i} className="star">⭐</span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="testimonial-author">
+                      <img src={t.image} alt={t.name} className="author-image" />
+                      <div className="author-info">
+                        <h4 className="author-name">{t.name}</h4>
+                        <p className="author-role">{t.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
           </div>
         </div>
       </section>

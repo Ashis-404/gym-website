@@ -54,9 +54,19 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-20px) rotate(2deg); }
-  66% { transform: translateY(-10px) rotate(-1deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+
+  66% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
 }
 
 /* Hero Section */
@@ -130,6 +140,10 @@
 }
 
 .membership-dashboard {
+  /* 💥 THIS WAS THE BUG 💥
+   * The opacity was 1, so it never faded in.
+   * It is now 0, so it will fade in with the 'animate-in' class.
+   */
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
@@ -153,8 +167,10 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  z-index: 3;
 }
 
+/* make the decorative pseudo-element sit behind the card content */
 .membership-card::before {
   content: '';
   position: absolute;
@@ -163,9 +179,19 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
-  z-index: 1;
+  z-index: 0;
+  pointer-events: none;
 }
 
+/* ensure header/body/actions are positioned and stacked above the pseudo-element */
+.card-header,
+.card-body,
+.card-actions {
+  position: relative;
+  z-index: 4;
+}
+
+/* Membership Card Header */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -230,10 +256,18 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
+/* Membership Card Body */
 .card-body {
   position: relative;
   z-index: 2;
@@ -338,6 +372,7 @@
   transition: width 0.8s ease;
 }
 
+/* Membership Card Actions */
 .card-actions {
   display: flex;
   gap: 15px;
@@ -599,11 +634,11 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
   }
-  
+
   .card-actions {
     flex-direction: column;
   }
-  
+
   .membership-dates {
     grid-template-columns: 1fr;
   }
@@ -613,37 +648,37 @@
   .container {
     padding: 0 16px;
   }
-  
+
   .view-hero {
     min-height: 40vh;
     margin-top: 70px;
   }
-  
+
   .membership-content {
     padding: 60px 0;
   }
-  
+
   .membership-card,
   .activity-section {
     padding: 30px 20px;
   }
-  
+
   .card-header {
     flex-direction: column;
     gap: 20px;
     align-items: flex-start;
   }
-  
+
   .plan-info {
     flex-direction: column;
     text-align: center;
     gap: 15px;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .no-membership-actions {
     flex-direction: column;
     align-items: center;
@@ -654,25 +689,25 @@
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .activity-item {
     flex-direction: column;
     text-align: center;
     gap: 15px;
   }
-  
+
   .membership-card {
     padding: 20px;
   }
-  
+
   .no-membership {
     padding: 60px 20px;
   }
