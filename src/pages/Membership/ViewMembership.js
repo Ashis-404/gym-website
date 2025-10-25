@@ -25,7 +25,7 @@ function ViewMembership() {
   useEffect(() => {
     if (membership) {
       setLocalMembership(membership);
-      try { localStorage.setItem("membership", JSON.stringify(membership)); } catch (e) {}
+      try { localStorage.setItem("membership", JSON.stringify(membership)); } catch (e) { }
     } else {
       // try to restore from localStorage
       try {
@@ -98,12 +98,6 @@ function ViewMembership() {
   }, [localMembership]);
 
   // Actions
-  const handleCancelMembership = () => {
-    // lightweight cancel: clear local and redirect — real app should call backend/context method
-    setLocalMembership(null);
-    try { localStorage.removeItem("membership"); } catch {}
-    navigate("/membership/plans");
-  };
 
   const handleDownloadReceipt = () => {
     if (!membershipDetails) return;
@@ -137,10 +131,6 @@ function ViewMembership() {
     navigate("/membership/plans");
   };
 
-  const handleViewWorkouts = () => {
-    navigate("/workouts");
-  };
-
   return (
     <div className="view-membership-page">
       {/* Floating Elements */}
@@ -160,7 +150,7 @@ function ViewMembership() {
               <span className="highlight"> Membership</span>
             </h1>
             <p className="hero-subtitle">
-              Track your fitness journey, view membership details, and monitor your progress 
+              Track your fitness journey, view membership details, and monitor your progress
               all in one place.
             </p>
           </div>
@@ -173,118 +163,104 @@ function ViewMembership() {
           {membershipDetails ? (
             <div className={`membership-dashboard ${contentVisible ? 'animate-in' : ''}`}>
               {/* Membership Card */}
-              <div className="membership-card-container">
-                <div className="membership-card">
-                  <div className="card-header">
-                    <div className="member-info">
-                      <div className="member-avatar">
-                        <span>👤</span>
-                      </div>
-                      <div className="member-details">
-                        <h2>{membershipDetails.memberName || "John Doe"}</h2>
-                        <p>Member ID: {membershipDetails.memberId || "#TF2024001"}</p>
-                      </div>
+              {/* <div className="membership-card-container"> */}
+              <div className="membership-card">
+                <div className="card-header">
+                  <div className="member-info">
+                    <div className="member-avatar">
+                      <span>👤</span>
                     </div>
-                    <div className={`status-badge ${membershipDetails.status.toLowerCase()}`}>
-                      <span className="status-dot"></span>
-                      {membershipDetails.status}
+                    <div className="member-details">
+                      <h2>{membershipDetails.memberName || "Ashis Mahato"}</h2>
+                      <p>Member ID: {membershipDetails.memberId || "#TF2024001"}</p>
                     </div>
                   </div>
-
-                  <div className="card-body">
-                    <div className="plan-info">
-                      <div className="plan-icon">💪</div>
-                      <div className="plan-details">
-                        <h3>{membershipDetails.name || membershipDetails.planName || "Standard Plan"}</h3>
-                        <p className="plan-price">₹{membershipDetails.price || "0"}</p>
-                        <p className="plan-duration">{membershipDetails.months} month(s)</p>
-                      </div>
-                    </div>
-
-                    <div className="membership-dates">
-                      <div className="date-item">
-                        <span className="date-label">Start Date</span>
-                        <span className="date-value">{formatDate(membershipDetails.startDate)}</span>
-                      </div>
-                      <div className="date-item">
-                        <span className="date-label">End Date</span>
-                        <span className="date-value">{formatDate(membershipDetails.endDate)}</span>
-                      </div>
-                      <div className="date-item">
-                        <span className="date-label">Days Remaining</span>
-                        <span className="date-value">{membershipDetails.daysRemaining}</span>
-                      </div>
-                    </div>
-
-                    <div className="progress-section">
-                      <div className="progress-header">
-                        <span>Membership Progress</span>
-                        <span>{membershipDetails.progressPercent}%</span>
-                      </div>
-                      <div className="progress-bar">
-                        <div 
-                          className="progress-fill"
-                          style={{ width: `${membershipDetails.progressPercent}%` }}
-                        ></div>
-                      </div>
-                      <div className="progress-meta">
-                        <small>{membershipDetails.passedDays}/{membershipDetails.totalDays} days passed</small>
-                      </div>
-                    </div>
-
-                    <div className="membership-stats-compact">
-                      <div className="stat-compact">
-                        <div className="stat-label">Total Workouts</div>
-                        <div className="stat-value">{membershipDetails.totalWorkouts}</div>
-                      </div>
-                      <div className="stat-compact">
-                        <div className="stat-label">Last Visit</div>
-                        <div className="stat-value">{membershipDetails.lastVisit || "—"}</div>
-                      </div>
-                      <div className="stat-compact">
-                        <div className="stat-label">Auto Renew</div>
-                        <div className="stat-value">{membershipDetails.autoRenew ? "Enabled" : "Disabled"}</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="card-actions">
-                    <button 
-                      className="action-button renew"
-                      onClick={handleExtend}
-                    >
-                      <span>Extend / Upgrade</span>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                        <path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
-                    <button 
-                      className="action-button download"
-                      onClick={handleDownloadReceipt}
-                    >
-                      <span>Download Receipt</span>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 3v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M7 10l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
-                    <button 
-                      className="action-button cancel"
-                      onClick={handleCancelMembership}
-                    >
-                      <span>Cancel Membership</span>
-                    </button>
-                    <button 
-                      className="action-button view-workouts"
-                      onClick={handleViewWorkouts}
-                    >
-                      <span>View Workouts</span>
-                    </button>
+                  <div className={`status-badge ${membershipDetails.status.toLowerCase()}`}>
+                    <span className="status-dot"></span>
+                    {membershipDetails.status}
                   </div>
                 </div>
+
+                <div className="card-body">
+                  <div className="plan-info">
+                    <div className="plan-icon">💪</div>
+                    <div className="plan-details">
+                      <h3>{membershipDetails.name || membershipDetails.planName || "Standard Plan"}</h3>
+                      <p className="plan-price">₹{membershipDetails.price || "0"}</p>
+                      <p className="plan-duration">{membershipDetails.months} month(s)</p>
+                    </div>
+                  </div>
+
+                  <div className="membership-dates">
+                    <div className="date-item">
+                      <span className="date-label">Start Date</span>
+                      <span className="date-value">{formatDate(membershipDetails.startDate)}</span>
+                    </div>
+                    <div className="date-item">
+                      <span className="date-label">End Date</span>
+                      <span className="date-value">{formatDate(membershipDetails.endDate)}</span>
+                    </div>
+                    <div className="date-item">
+                      <span className="date-label">Days Remaining</span>
+                      <span className="date-value">{membershipDetails.daysRemaining}</span>
+                    </div>
+                  </div>
+
+                  <div className="progress-section">
+                    <div className="progress-header">
+                      <span>Membership Progress</span>
+                      <span>{membershipDetails.progressPercent}%</span>
+                    </div>
+                    <div className="progress-bar">
+                      <div
+                        className="progress-fill"
+                        style={{ width: `${membershipDetails.progressPercent}%` }}
+                      ></div>
+                    </div>
+                    <div className="progress-meta">
+                      <small>{membershipDetails.passedDays}/{membershipDetails.totalDays} days passed</small>
+                    </div>
+                  </div>
+
+                  <div className="membership-stats-compact">
+              
+                    <div className="stat-compact">
+                      <div className="stat-label">Last Visit</div>
+                      <div className="stat-value">{membershipDetails.lastVisit || "—"}</div>
+                    </div>
+                    <div className="stat-compact">
+                      <div className="stat-label">Auto Renew</div>
+                      <div className="stat-value">{membershipDetails.autoRenew ? "Enabled" : "Disabled"}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card-actions">
+                  <button
+                    className="action-button renew"
+                    onClick={handleExtend}
+                  >
+                    <span>Extend / Upgrade</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <button
+                    className="action-button download"
+                    onClick={handleDownloadReceipt}
+                  >
+                    <span>Download Receipt</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 3v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M7 10l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+
+                </div>
               </div>
+
 
               {/* Stats Grid */}
               <div className="stats-grid">
@@ -365,16 +341,16 @@ function ViewMembership() {
                 <h2>No Active Membership</h2>
                 <p>You don't have an active membership yet. Start your fitness journey today!</p>
                 <div className="no-membership-actions">
-                  <button 
+                  <button
                     className="primary-button"
                     onClick={() => navigate("/membership/plans")}
                   >
                     <span>View Plans</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
-                  <button 
+                  <button
                     className="secondary-button"
                     onClick={() => navigate("/")}
                   >
